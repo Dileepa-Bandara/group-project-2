@@ -27,14 +27,26 @@ if (isset($_POST['login'])) {
                 echo "login";
                 echo $registeredUser["position"];
 
-                if ($registeredUser["position"] == "HR Manager") {
+                if ($registeredUser["position"] == "hr-manager") {
                     $_SESSION['username'] = $registeredUser['username'];
                     header("Location:../users/hr-manager/");
                 }
 
-                if ($registeredUser["position"] == "Leave Manager") {
+                if ($registeredUser["position"] == "leave-manager") {
                     $_SESSION['username'] = $registeredUser['username'];
-                    header("Location:../users/Leave manager/");
+                    header("Location:../users/leave-manager/");
+                }
+                if ($registeredUser["position"] == "payroll-manager") {
+                    $_SESSION['username'] = $registeredUser['username'];
+                    header("Location:../users/payroll-manager/");
+                }
+                if ($registeredUser["position"] == "admin") {
+                    $_SESSION['username'] = $registeredUser['username'];
+                    header("Location:../users/admin/");
+                }
+                if ($registeredUser["position"] == "recruitment-manager") {
+                    $_SESSION['username'] = $registeredUser['username'];
+                    header("Location:../users/leave-manager/");
                 }
             } else {
                 echo $user->showMessages("Warning", "Error in login");

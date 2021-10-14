@@ -17,10 +17,13 @@
         <input type="password" name="password" placeholder="password" id="password">
         <select name="position" id="position">
 
-            <option value="HR Manager">HR Manager</option>
-            <option value="Employee">Employee</option>
-            <option value="Leave Manager">Leave Manager</option>
-            <option value="Recruitment Manager">Recruitment Manager</option>
+            <option value="hr-manager">HR Manager</option>
+            <option value="employee">Employee</option>
+            <option value="leave-manager">Leave Manager</option>
+            <option value="recruitment-manager">Recruitment Manager</option>
+            <option value="payroll-manager">Payroll-Manager</option>
+            <option value="admin">Admin</option>
+
         </select>
 
 
