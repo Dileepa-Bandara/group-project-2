@@ -1,8 +1,8 @@
  <div class="top-container" id="top-container">
 
      <div class="menu__icon" id="menu__icon"><button }><img src="./assets/menu.png" alt=""> </button></div>
-     <div class="title">HRM System</div>
-     <div class="position">Admin</div>
+     <div class="title">NexGen HRM</div>
+     <div class="position">Employee</div>
      <div class="notification"><a href="#"><img src="./assets/notification.png" alt="Notification"></a></div>
      <div class="logout"><a href="../../assets/logout.php">logout</a></div>
  </div>
@@ -18,14 +18,14 @@
 
          <button class="dropButton"> Leaves</button>
          <div class="drop-content">
-             <a href="index.php?Page=viewLeaves.php">My Leaves</a>
-             <a href="index.php?Page=applyLeaves.php">Apply Leaves</a>
+             <a href="index.php?Page=employeeLeaveDetails.php">My Leaves</a>
+             <a href="index.php?Page=applyLeave.php">Apply Leaves</a>
 
          </div>
-         <button class="dropButton"><a href="index.php?Page=salary.php">Salary</a></button>
+         <button class="dropButton"><a href="index.php?Page=salaryDetails.php">Salary</a></button>
          <button class="dropButton"><a href="index.php?Page=training.php">Training Schedule</a></button>
          <button class="dropButton"><a href="index.php?Page=news.php">News</a></button>
-         <button class="dropButton"><a href="#">Templates</a></button>
+         <button class="dropButton"><a href="index.php?Page=templates.php">Templates</a></button>
 
          <button class="dropButton"><a href="#">Settings</a></button>
 

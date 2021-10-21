@@ -9,8 +9,8 @@
 </head>
 
 <body>
-    <h2>Registration form</h2>
-    <form action="#" id="register-form" method="post">
+    <h2>Employee Registration form</h2>
+    <form action="#" id="register-employee" method="post">
         <label for="">Username</label>
         <input type="text" name="username" placeholder="Username" id="username">
         <label for="">Password</label>
@@ -27,7 +27,30 @@
         </select>
 
 
-        <input type="submit" value="Register" id="register">
+        <input type="submit" value="RegisterEmployee" id="registerEmployee">
+
+
+    </form>
+
+    <h2>Manager Registration form</h2>
+    <form action="#" id="register-manager" method="post">
+        <label for="">Username</label>
+        <input type="text" name="username" placeholder="Username" id="username">
+        <label for="">Password</label>
+        <input type="password" name="password" placeholder="password" id="password">
+        <select name="position" id="position">
+
+            <option value="hr-manager">HR Manager</option>
+            <option value="employee">Employee</option>
+            <option value="leave-manager">Leave Manager</option>
+            <option value="recruitment-manager">Recruitment Manager</option>
+            <option value="payroll-manager">Payroll-Manager</option>
+            <option value="admin">Admin</option>
+
+        </select>
+
+
+        <input type="submit" value="RegisterManager" id="registerManager">
 
 
     </form>
@@ -57,45 +80,47 @@
         $(document).ready(function() {
             //Ajax request
             //register form validation
-            $("#register").click(function(e) {
-                if ($("#register-form")[0].checkValidity()) {
+            $("#registerEmployee").click(function(e) {
+                if ($("#register-employee")[0].checkValidity()) {
                     e.preventDefault();
-                    $("#register").val("Please Wait.....");
+                    $("#registerEmployee").val("Please Wait.....");
                     //Ajax request
                     $.ajax({
                         url: "assets/action.php",
                         method: "post",
                         //grab data from form
-                        data: $("#register-form").serialize() + "&action=register",
+                        data: $("#register-employee").serialize() + "&action=registerEmployee",
                         success: function(response) {
                             // console.log(response);
-                            $("#register").val("Register");
+                            $("#registerEmployee").val("Register");
                         }
 
                     })
                 }
+
+
             })
-            // login ajax request
-            // $("#login").click(function(e) {
-            //     if ($("#login-form")[0].checkValidity()) {
-            //         e.preventDefault();
-            //         $("#login").val("Please Wait.....");
-            //Ajax request
-            // $.ajax({
-            //     url: "assets/action.php",
-            //     method: "post",
-            //     //grab data from form
-            //     data: $("#login-form").serialize() + "&action=login",
-            //     success: function(response) {
-            //         // console.log(response);
-            //         // window.location = response;
-            //         $("#login").val("login");
-            //     }
+            $("#registerManager").click(function(e) {
+                if ($("#register-manager")[0].checkValidity()) {
+                    e.preventDefault();
+                    $("#registerManager").val("Please Wait.....");
+                    //Ajax request
+                    $.ajax({
+                        url: "assets/action.php",
+                        method: "post",
+                        //grab data from form
+                        data: $("#register-manager").serialize() + "&action=registerManager",
+                        success: function(response) {
+                            // console.log(response);
+                            $("#registerManager").val("Register");
+                        }
 
-            // })
-            //     }
+                    })
+                }
 
-            // })
+
+            })
+
 
 
         });

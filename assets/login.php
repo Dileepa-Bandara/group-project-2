@@ -16,38 +16,71 @@ if (isset($_POST['login'])) {
         $username = $user->checkInput($_POST["l-username"]);
         $password = $user->checkInput($_POST["l-password"]);
 
-        $registeredUser = $user->login($username);
+        $registeredEmployee = $user->loginEmployee($username);
+        $registeredManager = $user->loginManager($username);
 
         // print_r($username);
         // print_r($password);
 
         // print_r($registeredUser);
-        if ($registeredUser != null) {
-            if (password_verify($password, $registeredUser["password"])) {
+        if ($registeredEmployee != null || $registeredManager != null) {
+            if (password_verify($password, $registeredEmployee["password"])) {
                 echo "login";
-                echo $registeredUser["position"];
+                echo $registeredEmployee["position"];
 
-                if ($registeredUser["position"] == "hr-manager") {
-                    $_SESSION['username'] = $registeredUser['username'];
-                    header("Location:../users/hr-manager/");
-                }
+                // if ($registeredUser["position"] == "hr-manager") {
+                //     $_SESSION['username'] = $registeredUser['username'];
+                //     header("Location:../users/hr-manager/");
+                // }
 
-                if ($registeredUser["position"] == "leave-manager") {
-                    $_SESSION['username'] = $registeredUser['username'];
-                    header("Location:../users/leave-manager/");
+                // if ($registeredUser["position"] == "leave-manager") {
+                //     $_SESSION['username'] = $registeredUser['username'];
+                //     header("Location:../users/leave-manager/");
+                // }
+                // if ($registeredUser["position"] == "payroll-manager") {
+                //     $_SESSION['username'] = $registeredUser['username'];
+                //     header("Location:../users/payroll-manager/");
+                // }
+                // if ($registeredUser["position"] == "admin") {
+                //     $_SESSION['username'] = $registeredUser['username'];
+                //     header("Location:../users/admin/");
+                // }
+                // if ($registeredUser["position"] == "recruitment-manager") {
+                //     $_SESSION['username'] = $registeredUser['username'];
+                //     header("Location:../users/leave-manager/");
+                // }
+                if ($registeredEmployee["position"] == "employee") {
+                    $_SESSION['username'] = $registeredEmployee['username'];
+                    header("Location:../users/employee/");
                 }
-                if ($registeredUser["position"] == "payroll-manager") {
-                    $_SESSION['username'] = $registeredUser['username'];
-                    header("Location:../users/payroll-manager/");
-                }
-                if ($registeredUser["position"] == "admin") {
-                    $_SESSION['username'] = $registeredUser['username'];
+            } else {
+                echo $user->showMessages("Warning", "Error in login");
+            }
+            if (password_verify($password, $registeredManager["password"])) {
+                echo "login";
+                echo $registeredManager["position"];
+
+                // if ($registeredManager["position"] == "hr-manager") {
+                //     $_SESSION['username'] = $registeredManager['username'];
+                //     header("Location:../users/hr-manager/");
+                // }
+
+                // if ($registeredManager["position"] == "leave-manager") {
+                //     $_SESSION['username'] = $registeredManager['username'];
+                //     header("Location:../users/leave-manager/");
+                // }
+                // if ($registeredManager["position"] == "payroll-manager") {
+                //     $_SESSION['username'] = $registeredManager['username'];
+                //     header("Location:../users/payroll-manager/");
+                // }
+                if ($registeredManager["position"] == "admin") {
+                    $_SESSION['username'] = $registeredManager['username'];
                     header("Location:../users/admin/");
                 }
-                if ($registeredUser["position"] == "recruitment-manager") {
-                    $_SESSION['username'] = $registeredUser['username'];
-                    header("Location:../users/leave-manager/");
-                }
+                // if ($registeredManager["position"] == "recruitment-manager") {
+                //     $_SESSION['username'] = $registeredManager['username'];
+                //     header("Location:../users/leave-manager/");
+                // }
             } else {
                 echo $user->showMessages("Warning", "Error in login");
             }

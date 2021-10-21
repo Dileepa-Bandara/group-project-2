@@ -7,19 +7,20 @@ require_once "./config.php";
 
 class Auth extends Database
 {
-    //register new user
-    public function registerAuth($username, $password, $position)
+    //register new employee
+
+    public function registerAuthEmployee($username, $password, $position)
     {
-        $sql = "INSERT INTO users(username,password,position) VALUES (:username,:pass,:position)";
+        $sql = "INSERT INTO employee(username,password,position,isDelete) VALUES (:username,:pass,:position,:isDelete)";
         $statement = $this->conn->prepare($sql);
-        $statement->execute(['username' => $username, 'pass' => $password, 'position' => $position]);
+        $statement->execute(['username' => $username, 'pass' => $password, 'position' => $position, 'isDelete' => 1]);
         return true;
     }
 
-    //check user already registered
-    public function userExist($username)
+    //check user already registered employee
+    public function userExistEmployee($username)
     {
-        $sql = "SELECT username FROM users WHERE username = :username";
+        $sql = "SELECT username FROM employee WHERE username = :username";
         $statement = $this->conn->prepare($sql);
         $statement->execute(['username' => $username]);
         $result =      $statement->fetch(PDO::FETCH_ASSOC);
@@ -27,9 +28,39 @@ class Auth extends Database
     }
 
     //login user
-    public function login($username)
+    public function loginEmployee($username)
     {
-        $sql = "SELECT * FROM users WHERE username = :username";
+        $sql = "SELECT * FROM employee WHERE username = :username";
+        $statement = $this->conn->prepare($sql);
+        $statement->execute(['username' => $username]);
+        $result =      $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+
+    //Manager Registration quaries
+    public function registerAuthManager($username, $password, $position)
+    {
+        $sql = "INSERT INTO managers(username,password,position,isDelete) VALUES (:username,:pass,:position,:isDelete)";
+        $statement = $this->conn->prepare($sql);
+        $statement->execute(['username' => $username, 'pass' => $password, 'position' => $position, 'isDelete' => 1]);
+        return true;
+    }
+
+    //check user already registered employee
+    public function userExistManager($username)
+    {
+        $sql = "SELECT username FROM managers WHERE username = :username";
+        $statement = $this->conn->prepare($sql);
+        $statement->execute(['username' => $username]);
+        $result =      $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    //login user
+    public function loginManager($username)
+    {
+        $sql = "SELECT * FROM managers WHERE username = :username";
         $statement = $this->conn->prepare($sql);
         $statement->execute(['username' => $username]);
         $result =      $statement->fetch(PDO::FETCH_ASSOC);
