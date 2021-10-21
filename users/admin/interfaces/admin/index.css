@@ -15,12 +15,10 @@ html {
 
 body {
   font-family: serif;
-  height: 100%;
 }
 
 .main-container {
   width: 100%;
-  height: 100%;
 }
 /* top-menu ----------------------------------------------*/
 .top-container {
@@ -28,7 +26,6 @@ body {
   background: var(--background-color);
   display: flex;
   align-items: center;
-  top: 0;
 
   z-index: 10;
   position: absolute;
@@ -95,27 +92,26 @@ body {
   flex-direction: column;
   box-sizing: border-box;
 
-  /* height: 100vh; */
+  height: 100vh;
   top: 0;
   left: 0;
   z-index: 1;
-  position: fixed;
-
+  position: absolute;
   align-items: center;
   overflow-x: hidden;
   transition: 0.3s;
-  /* height: 100%; */
-  border-bottom: 10px solid var(--button-color-side);
 }
 
 .avatar {
   margin-top: 6em;
 
   flex-basis: 8em;
+ 
 }
 .avatar img {
   width: 180px;
   height: 180px;
+ 
 }
 
 .name {

@@ -18,6 +18,10 @@ if (isset($_POST['login'])) {
 
         $registeredUser = $user->login($username);
 
+        echo "<br>";
+        echo $registeredUser['password'];
+        echo "<br>";
+        echo $password;
         // print_r($username);
         // print_r($password);
 
@@ -25,26 +29,26 @@ if (isset($_POST['login'])) {
         if ($registeredUser != null) {
             if (password_verify($password, $registeredUser["password"])) {
                 echo "login";
-                echo $registeredUser["position"];
+                echo $registeredUser["userRole"];
 
-                if ($registeredUser["position"] == "hr-manager") {
+                if ($registeredUser["userRole"] == "hr-manager") {
                     $_SESSION['username'] = $registeredUser['username'];
                     header("Location:../users/hr-manager/");
                 }
 
-                if ($registeredUser["position"] == "leave-manager") {
+                if ($registeredUser["userRole"] == "leave-manager") {
                     $_SESSION['username'] = $registeredUser['username'];
                     header("Location:../users/leave-manager/");
                 }
-                if ($registeredUser["position"] == "payroll-manager") {
+                if ($registeredUser["userRole"] == "payroll-manager") {
                     $_SESSION['username'] = $registeredUser['username'];
                     header("Location:../users/payroll-manager/");
                 }
-                if ($registeredUser["position"] == "admin") {
+                if ($registeredUser["userRole"] == "admin") {
                     $_SESSION['username'] = $registeredUser['username'];
                     header("Location:../users/admin/");
                 }
-                if ($registeredUser["position"] == "recruitment-manager") {
+                if ($registeredUser["userRole"] == "recruitment-manager") {
                     $_SESSION['username'] = $registeredUser['username'];
                     header("Location:../users/leave-manager/");
                 }

@@ -7,6 +7,8 @@ require_once "./config.php";
 
 class Auth extends Database
 {
+
+    /*
     //register new user
     public function registerAuth($username, $password, $position)
     {
@@ -16,10 +18,14 @@ class Auth extends Database
         return true;
     }
 
+    */
+
+
+
     //check user already registered
     public function userExist($username)
     {
-        $sql = "SELECT username FROM users WHERE username = :username";
+        $sql = "SELECT username FROM systemusers WHERE username = :username";
         $statement = $this->conn->prepare($sql);
         $statement->execute(['username' => $username]);
         $result =      $statement->fetch(PDO::FETCH_ASSOC);
@@ -29,10 +35,10 @@ class Auth extends Database
     //login user
     public function login($username)
     {
-        $sql = "SELECT * FROM users WHERE username = :username";
+        $sql = "SELECT * FROM systemusers WHERE username = :username";
         $statement = $this->conn->prepare($sql);
         $statement->execute(['username' => $username]);
-        $result =      $statement->fetch(PDO::FETCH_ASSOC);
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
 }

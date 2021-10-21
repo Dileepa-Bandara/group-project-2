@@ -9,24 +9,42 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
     echo "<pre>";
     print_r($_POST);
     echo "</pre>";
-
+/*
     //check input,remove slashes,htmltags
     $name = $user->checkInput($_POST["username"]); //$_POST["data came from ajax request"]
     $pass = $user->checkInput($_POST["password"]);
     $pos = $user->checkInput($_POST["position"]);
 
+   
+
+
+    //my code
+    $empId = $user->checkInput($_POST["empId"]);
+    $name = $user->checkInput($_POST["name"]);
+    $gender = $user->checkInput($_POST["gender"]);
+    $userRole = $user->checkInput($_POST["userRole"]);
+    $department = $user->checkInput($_POST["department"]);
+    $email = $user->checkInput($_POST["email"]);
+    $mobile = $user->checkInput($_POST["mobile"]);
+    $address = $user->checkInput($_POST["address"]);
+    $username = $user->checkInput($_POST["username"]);
+    $password = $user->checkInput($_POST["password"]);
+
+     */
+   
+
 
     // encryot password
-    $hpass = password_hash($pass, PASSWORD_DEFAULT);
+    $hpass = password_hash($password, PASSWORD_DEFAULT);
     // echo "<pre>";
     // print_r($name);
     // echo "</pre>";
     //user exist
-    if ($user->userExist($name)) {
+    if ($user->userExist($username)) {
         echo $user->showMessages("Warning", "This user already registered!");
     } else {
-        if ($user->registerAuth($name, $hpass, $pos)) {
-            echo "register";
+        if ($user->registerAuth($empId, $name, $gender, $userRole, $department, $email, $mobile, $address, $username, $password) {
+            echo "Added Successfully";
         } else {
             echo $user->showMessages("Warning", "Error in database");
         }
