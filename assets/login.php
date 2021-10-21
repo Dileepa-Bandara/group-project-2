@@ -19,10 +19,6 @@ if (isset($_POST['login'])) {
         $registeredEmployee = $user->loginEmployee($username);
         $registeredManager = $user->loginManager($username);
 
-        echo "<br>";
-        echo $registeredUser['password'];
-        echo "<br>";
-        echo $password;
         // print_r($username);
         // print_r($password);
 
@@ -30,7 +26,6 @@ if (isset($_POST['login'])) {
         if ($registeredEmployee != null || $registeredManager != null) {
             if (password_verify($password, $registeredEmployee["password"])) {
                 echo "login";
-<<<<<<< HEAD
                 echo $registeredEmployee["position"];
 
                 // if ($registeredUser["position"] == "hr-manager") {
@@ -86,31 +81,6 @@ if (isset($_POST['login'])) {
                 //     $_SESSION['username'] = $registeredManager['username'];
                 //     header("Location:../users/leave-manager/");
                 // }
-=======
-                echo $registeredUser["userRole"];
-
-                if ($registeredUser["userRole"] == "hr-manager") {
-                    $_SESSION['username'] = $registeredUser['username'];
-                    header("Location:../users/hr-manager/");
-                }
-
-                if ($registeredUser["userRole"] == "leave-manager") {
-                    $_SESSION['username'] = $registeredUser['username'];
-                    header("Location:../users/leave-manager/");
-                }
-                if ($registeredUser["userRole"] == "payroll-manager") {
-                    $_SESSION['username'] = $registeredUser['username'];
-                    header("Location:../users/payroll-manager/");
-                }
-                if ($registeredUser["userRole"] == "admin") {
-                    $_SESSION['username'] = $registeredUser['username'];
-                    header("Location:../users/admin/");
-                }
-                if ($registeredUser["userRole"] == "recruitment-manager") {
-                    $_SESSION['username'] = $registeredUser['username'];
-                    header("Location:../users/leave-manager/");
-                }
->>>>>>> 5b6429da1de7b4faaa4f1783ece94d4e0c02ae1e
             } else {
                 echo $user->showMessages("Warning", "Error in login");
             }
