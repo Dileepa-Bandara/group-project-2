@@ -10,7 +10,7 @@
 
 <body>
     <?php
-    require_once './interfaces/admin/index.php'
+    require_once './interfaces/leavemanager/index.php'
     ?>
 </body>
 
